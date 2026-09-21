@@ -1,12 +1,13 @@
 package("mcpp")
-    set_homepage("https://github.com/KaruroChori/mcpp")
+    set_homepage("https://git.chatomari.work/lazy-eggplant/mcpp")
     set_description("A C++26 reflection-based Model Context Protocol (MCP) server library")
     set_license("LGPL-3.0")
 
     -- The reflection flags are mandatory; do not let xmake probe-and-drop them.
     set_policy("check.auto_ignore_flags", false)
 
-    add_urls("https://github.com/KaruroChori/mcpp.git")
+    add_urls("https://git.chatomari.work/lazy-eggplant/mcpp.git",
+             "https://github.com/KaruroChori/mcpp.git")
 
     add_versions("v0.2.0", "f9345f55c0626964732f1070998198cceaabefbe")
     add_versions("v0.2.1", "55f04836b721b2314624fdc1d80268d170236fb4")

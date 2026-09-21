@@ -1,10 +1,11 @@
 package("reflite")
     set_kind("library", {headeronly = true})
-    set_homepage("https://codeberg.org/karurochori/reflite")
+    set_homepage("https://git.chatomari.work/lazy-eggplant/reflite")
     set_description("C++26 reflection wrapper for SQLITE")
     set_license("AGPL3.0")
 
-    add_urls("https://codeberg.org/karurochori/reflite.git")
+    add_urls("https://git.chatomari.work/lazy-eggplant/reflite.git",
+             "https://codeberg.org/karurochori/reflite.git")
 
     on_install(function (package)
         import("package.tools.xmake").install(package)

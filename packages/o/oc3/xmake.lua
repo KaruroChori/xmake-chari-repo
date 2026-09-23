@@ -3,8 +3,7 @@ package("oc3")
     set_description("KD-Tree acceleration library")
     set_license("AGPL3")
 
-    add_urls("https://git.internal.chatomari.work/lazy-eggplant/oc3.git",
-             "https://github.com/karurochori/oc3.git")
+    add_urls("https://git.internal.chatomari.work/lazy-eggplant/oc3.git")
 
     on_install(function (package)
         import("package.tools.xmake").install(package)

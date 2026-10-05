@@ -1,0 +1,44 @@
+name: bump-version
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package name (e.g. kd3)"
+        required: true
+        type: string
+      version:
+        description: "Version to add/update (vX.Y.Z)"
+        required: true
+        type: string
+      sha:
+        description: "Commit SHA the tag points at"
+        required: true
+        type: string
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bump package version
+        run: |
+          tools/bump-version.sh \
+            "${{ github.event.inputs.package }}" \
+            "${{ github.event.inputs.version }}" \
+            "${{ github.event.inputs.sha }}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "chari-release-bot"
+          git config user.email "release-bot@noreply.git.chatomari.work"
+          git add packages
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          git commit -m "bump ${{ github.event.inputs.package }} to ${{ github.event.inputs.version }}"
+          git push

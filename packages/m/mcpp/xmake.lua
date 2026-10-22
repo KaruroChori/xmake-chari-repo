@@ -11,6 +11,7 @@ package("mcpp")
 
     add_versions("v0.2.0", "f9345f55c0626964732f1070998198cceaabefbe")
     add_versions("v0.2.1", "55f04836b721b2314624fdc1d80268d170236fb4")
+    add_versions("v0.2.3", "85e8ded6178c46435725321de28bb40a7efa10a3")
 
     -- Build and link the library with exceptions enabled, for exceptions-enabled
     -- consumers (e.g. ones that use fmt or simdjson with exceptions themselves).

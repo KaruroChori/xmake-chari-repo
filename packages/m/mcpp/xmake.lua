@@ -25,6 +25,7 @@ package("mcpp")
     on_load(function (package)
         package:add("cxflags", "-freflection", {force = true})
         if not package:config("server") then
+            package:set("kind", "library", {headeronly = true})
             return
         end
         local exceptions = package:config("exceptions")

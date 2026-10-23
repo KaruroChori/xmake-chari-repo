@@ -2,6 +2,7 @@ package("mcpp")
     set_homepage("https://git.chatomari.work/lazy-eggplant/mcpp")
     set_description("A C++26 reflection-based Model Context Protocol (MCP) server library")
     set_license("LGPL-3.0")
+    set_kind("library", {headeronly = true})
 
     -- The reflection flags are mandatory; do not let xmake probe-and-drop them.
     set_policy("check.auto_ignore_flags", false)
@@ -25,9 +26,9 @@ package("mcpp")
     on_load(function (package)
         package:add("cxflags", "-freflection", {force = true})
         if not package:config("server") then
-            package:set("kind", "library", {headeronly = true})
             return
         end
+        package:add("links", "mcpp-server")
         local exceptions = package:config("exceptions")
         -- mcpp-server links simdjson and fmt; consumers need them transitively.
         package:add("deps", "simdjson", {configs = {noexceptions = not exceptions}})
